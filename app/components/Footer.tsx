@@ -1,5 +1,4 @@
-// app/components/Footer.tsx
-export default function Footer() {
+﻿export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
