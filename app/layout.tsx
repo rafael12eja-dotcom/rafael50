@@ -43,3 +43,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+import Footer from "./components/Footer";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="pt-BR">
+      <body>
+        <Header />
+        <main className="container">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
