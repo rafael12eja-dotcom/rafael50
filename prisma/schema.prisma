@@ -1,43 +1,19 @@
+// prisma/schema.prisma
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"              // simples para começar
+  url      = "file:./dev.db"       // não precisa de .env agora
 }
 
-/* Rafael 50 — estrutura inicial */
-model Receita {
-  id             Int      @id @default(autoincrement())
-  descricao      String
-  valor          Float
-  dataRecebida   DateTime @default(now())
-}
-
-model Despesa {
-  id             Int      @id @default(autoincrement())
-  descricao      String
-  valor          Float
-  dataVencimento DateTime
-  quitada        Boolean  @default(false)
-}
-
-model Emprestimo {
-  id             Int      @id @default(autoincrement())
-  credor         String
-  valorParcela   Float
-  parcelasTotais Int      @default(0)
-  parcelasPagas  Int      @default(0)
-  jurosMensal    Float    @default(0)
-  ativo          Boolean  @default(true)
-}
-
-
-model MetaFinanceira {
-  id        Int      @id @default(autoincrement())
-  objetivo  String
-  valorMeta Float
-  prazo     DateTime
-  progresso Float    @default(0)
-}
+// Quando quiser, adicionamos os models aqui.
+// Exemplo futuro:
+// model Receita {
+//   id        Int      @id @default(autoincrement())
+//   titulo    String
+//   valor     Decimal  @db.Decimal(10,2)
+//   criadoEm  DateTime @default(now())
+// }
