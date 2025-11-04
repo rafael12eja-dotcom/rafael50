@@ -2,6 +2,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const siteTitle = "Rafael50 — Portfólio";
 const siteDesc =
@@ -29,21 +30,9 @@ export const metadata: Metadata = {
     images: [ogImage],
   },
   icons: {
-    icon: "/icon.png", // gerado via app/icon.png
+    icon: "/icon.png",
   },
 };
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="pt-BR">
-      <body>
-        <Header />
-        <main className="container">{children}</main>
-      </body>
-    </html>
-  );
-}
-import Footer from "./components/Footer";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
