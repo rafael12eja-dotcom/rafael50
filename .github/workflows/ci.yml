@@ -24,9 +24,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'yarn'
+
+      - name: Install Yarn
+        run: npm install -g yarn
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install --frozen-lockfile
 
       - name: Generate Prisma client
         run: npx prisma generate
@@ -38,4 +42,4 @@ jobs:
         run: npx prisma db seed || echo "no seed"
 
       - name: Build project
-        run: npm run build
+        run: yarn build
