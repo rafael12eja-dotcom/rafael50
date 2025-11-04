@@ -1,0 +1,29 @@
+﻿name: CI Rafael50
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      NEXT_PUBLIC_SITE_NAME: ${{ secrets.NEXT_PUBLIC_SITE_NAME }}
+      NEXT_TELEMETRY_DISABLED: ${{ secrets.NEXT_TELEMETRY_DISABLED }}
+      PRISMA_TELEMETRY_INFORMATION: ${{ secrets.PRISMA_TELEMETRY_INFORMATION }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - run: pnpm install --frozen-lockfile=false
+      - run: npx prisma generate
+      - run: npx prisma db push --accept-data-loss
+      - run: npx prisma db seed || echo "no seed"
+      - run: pnpm run build
