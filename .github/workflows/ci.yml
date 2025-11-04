@@ -32,18 +32,11 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Prepare Git (increase timeouts, force HTTP/1.1)
-        run: |
-          git config --global http.lowSpeedLimit 1000
-          git config --global http.lowSpeedTime 60
-          git config --global http.version HTTP/1.1
-
-      - name: Checkout repository (no submodules, shallow, retry)
+      - name: Checkout repository (robusto)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0          # histórico completo evita problemas de git
           submodules: false
           lfs: false
-          persist-credentials: false
-          retry: true
+
 
