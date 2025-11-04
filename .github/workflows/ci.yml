@@ -24,15 +24,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
-      - name: Install pnpm globally
-        run: npm install -g pnpm@9
-
-      - name: Verify pnpm installation
-        run: pnpm --version
+      - name: Install pnpm manually (stable method)
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.12.2 --activate
+          pnpm --version
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile=false
+        run: pnpm install
 
       - name: Generate Prisma client
         run: npx prisma generate
@@ -40,8 +41,8 @@ jobs:
       - name: Push schema to database
         run: npx prisma db push --accept-data-loss
 
-      - name: Seed database
-        run: npx prisma db seed || echo "no seed"
+      - name: Seed database (optional)
+        run: npx prisma db seed || echo "no seed script defined"
 
-      - name: Build project
-        run: pnpm run build
+      - name: Build Next.js app
+        run: pnpm exec next build
