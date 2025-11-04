@@ -35,3 +35,29 @@ export default function Home() {
     </section>
   );
 }
+// app/projetos/page.tsx
+export default function ProjetosPage() {
+  return (
+    <section>
+      <h1>Projetos</h1>
+      <p>Seleção de trabalhos e produtos que tenho construído recentemente.</p>
+
+      <div className="grid">
+        <article className="card">
+          <h3>Essenzia Eventos — Site</h3>
+          <p>One-page institucional com foco em conversão e identidade elegante.</p>
+        </article>
+
+        <article className="card">
+          <h3>Black Friday — Painel de Vendas</h3>
+          <p>Dashboard simples para metas e status de propostas no 1,2 e Já!.</p>
+        </article>
+
+        <article className="card">
+          <h3>Apresentação Comercial — 1,2 e Já!</h3>
+          <p>Deck enxuto com diferenciais, pacotes e CTA de WhatsApp.</p>
+        </article>
+      </div>
+    </section>
+  );
+}

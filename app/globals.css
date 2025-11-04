@@ -163,4 +163,30 @@ ul { line-height:1.9; }
 .btn-outline:hover {
   border-color: var(--accent);
 }
+/* --- Projetos --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+.card {
+  background: #121316;
+  border: 1px solid #1d1f24;
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+.card h3 {
+  margin: 0 0 6px;
+  color: var(--accent);
+}
+.card p {
+  color: var(--muted);
+  margin: 0;
+}
 
