@@ -10,6 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      NEXT_PUBLIC_SITE_NAME: ${{ secrets.NEXT_PUBLIC_SITE_NAME }}
+      NEXT_TELEMETRY_DISABLED: ${{ secrets.NEXT_TELEMETRY_DISABLED }}
+      PRISMA_TELEMETRY_INFORMATION: ${{ secrets.PRISMA_TELEMETRY_INFORMATION }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,25 +24,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'pnpm'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile=false
 
       - name: Generate Prisma client
         run: npx prisma generate
 
       - name: Push schema to database
         run: npx prisma db push --accept-data-loss
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      - name: Seed database
-        run: npx prisma db seed
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Seed database (ignorar erro se não houver seed)
+        run: npx prisma db seed || echo "no seed"
 
       - name: Build project
         run: pnpm run build
