@@ -1,192 +1,91 @@
-:root { --bg:#0b0b0c; --fg:#f6f7fb; --muted:#9aa2b2; --accent:#6aa7ff; }
-html, body { margin:0; padding:0; background:var(--bg); color:var(--fg); font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif; }
-.container { max-width: 880px; margin: 64px auto; padding: 0 20px; }
-h1 { font-size: 56px; line-height:1.1; margin: 0 0 12px; letter-spacing: -0.02em; }
-p { color: var(--muted); margin: 0 0 24px; }
-code { background: #181a1f; padding: 2px 6px; border-radius: 6px; }
-.btn { display:inline-block; padding:12px 16px; border-radius:10px; text-decoration:none; background:var(--accent); color:black; font-weight:600; }
-ul { line-height:1.9; }
-/* --- Header --- */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: saturate(140%) blur(6px);
-  background: rgba(11, 11, 12, 0.7);
-  border-bottom: 1px solid #191b20;
+/* ===========================
+   Rafael50 — Estilo Premium
+   =========================== */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== RESET ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #0d0d0d;
+  color: #f5f5f5;
+  scroll-behavior: smooth;
 }
-.site-header__inner {
+
+/* ===== CONTAINER ===== */
+.container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 14px 20px;
+  padding: 2rem 1.5rem;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  background: rgba(20, 20, 20, 0.9);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #1f1f1f;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-header__inner {
+  width: 100%;
+  max-width: 1100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .brand {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.6rem;
   text-decoration: none;
-  color: var(--fg);
-}
-.brand__logo {
-  border-radius: 10px;
-}
-.brand__name {
+  color: #f8f8f8;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
 }
+
+.brand__logo {
+  border-radius: 8px;
+}
+
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 1.5rem;
 }
+
 .site-nav__link {
-  color: var(--muted);
   text-decoration: none;
-  font-weight: 600;
+  color: #ccc;
+  transition: color 0.2s ease;
 }
+
 .site-nav__link:hover {
-  color: var(--fg);
+  color: #fff;
 }
+
 .site-nav__cta {
-  display: inline-block;
-  padding: 10px 14px;
-  border-radius: 10px;
+  background: linear-gradient(90deg, #d4af37, #e7c766);
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
   text-decoration: none;
-  background: var(--accent);
-  color: #0b0b0c;
-  font-weight: 700;
-}
-/* --- Badge --- */
-.badge {
-  display: inline-block;
-  background: #ffe09b1a;
-  color: #ffd27a;
-  border: 1px solid #4a3f23;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-weight: 700;
-  margin-bottom: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* --- Hero card --- */
-.hero-card {
-  background: #0e1715;
-  border: 1px solid #12302a;
-  border-radius: 14px;
-  padding: 22px;
-  box-shadow: 0 0 0 1px rgba(18,48,42,0.25) inset;
-  max-width: 820px;
-}
-.checks {
-  margin: 12px 0 18px;
-  padding-left: 20px;
-}
-.checks li { margin: 6px 0; }
-.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-
-/* --- Buttons --- */
-.btn {
-  display: inline-block;
-  padding: 12px 16px;
-  border-radius: 10px;
-  text-decoration: none;
-  background: var(--accent);
-  color: #0b0b0c;
-  font-weight: 700;
-}
-.btn-outline {
-  display: inline-block;
-  padding: 11px 15px;
-  border-radius: 10px;
-  text-decoration: none;
-  border: 1px solid #2a2f38;
-  color: var(--fg);
-  font-weight: 700;
-}
-.btn-outline:hover { border-color: var(--accent); }
-/* --- Badge --- */
-.badge {
-  display: inline-block;
-  background: #ffe09b1a;
-  color: #ffd27a;
-  border: 1px solid #4a3f23;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-weight: 700;
-  margin-bottom: 14px;
+.site-nav__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
 }
 
-/* --- Hero card --- */
-.hero-card {
-  background: #0e1715;
-  border: 1px solid #12302a;
-  border-radius: 14px;
-  padding: 22px;
-  box-shadow: 0 0 0 1px rgba(18,48,42,0.25) inset;
-  max-width: 820px;
-}
-.checks {
-  margin: 12px 0 18px;
-  padding-left: 20px;
-}
-.checks li {
-  margin: 6px 0;
-}
-.cta-row {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-/* --- Buttons --- */
-.btn {
-  display: inline-block;
-  padding: 12px 16px;
-  border-radius: 10px;
-  text-decoration: none;
-  background: var(--accent);
-  color: #0b0b0c;
-  font-weight: 700;
-}
-.btn-outline {
-  display: inline-block;
-  padding: 11px 15px;
-  border-radius: 10px;
-  text-decoration: none;
-  border: 1px solid #2a2f38;
-  color: var(--fg);
-  font-weight: 700;
-}
-.btn-outline:hover {
-  border-color: var(--accent);
-}
-/* --- Projetos --- */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  margin-top: 32px;
-}
-.card {
-  background: #121316;
-  border: 1px solid #1d1f24;
-  border-radius: 12px;
-  padding: 24px;
-  transition: transform 0.25s ease, border-color 0.25s ease;
-}
-.card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-}
-.card h3 {
-  margin: 0 0 6px;
-  color: var(--accent);
-}
-.card p {
-  color: var(--muted);
-  margin: 0;
-}
-
+/* ===== H*
