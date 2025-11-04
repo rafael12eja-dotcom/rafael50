@@ -23,7 +23,7 @@ export default function Header() {
           <Link href="/projetos" className="site-nav__link">Projetos</Link>
           <a
             className="site-nav__cta"
-            href="https://wa.me/5531999999999"
+            href="https://wa.me/55319255812"
             target="_blank"
             rel="noopener noreferrer"
           >
