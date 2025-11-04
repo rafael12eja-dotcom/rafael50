@@ -32,14 +32,18 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Generate Prisma client
-        run: npx prisma generate
+      - name: Prepare Git (increase timeouts, force HTTP/1.1)
+        run: |
+          git config --global http.lowSpeedLimit 1000
+          git config --global http.lowSpeedTime 60
+          git config --global http.version HTTP/1.1
 
-      - name: Push schema to database
-        run: npx prisma db push --accept-data-loss
+      - name: Checkout repository (no submodules, shallow, retry)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          submodules: false
+          lfs: false
+          persist-credentials: false
+          retry: true
 
-      - name: Seed database (optional)
-        run: npx prisma db seed || echo "no seed"
-
-      - name: Build project
-        run: yarn build
