@@ -9,20 +9,22 @@ export default function Home() {
       <div className="hero-card">
         <p>
           Construo soluções digitais e apresentações comerciais com foco em conversão,
-          combinando identidade visual, sites rápidos e integrações ágeis.
+          combinando identidade visual, sites rápidos e integrações inteligentes.
         </p>
 
         <ul className="checks">
-          <li>Identidade visual e apresentação (Essenzia/1,2 e Já!)</li>
-          <li>Sites e landing pages otimizadas</li>
-          <li>Integrações (formularios, WhatsApp, automações)</li>
+          <li>✨ Identidade visual e apresentações comerciais (Essenzia, 1,2 e Já!)</li>
+          <li>⚙️ Sites e landing pages otimizadas</li>
+          <li>🤖 Integrações automáticas (WhatsApp, formulários, sistemas)</li>
         </ul>
 
         <div className="cta-row">
-          <Link href="/projetos" className="btn">Ver projetos</Link>
+          <Link href="/projetos" className="btn">
+            Ver projetos
+          </Link>
           <a
             className="btn-outline"
-            href="https://wa.me/5531992255812?text=Olá,%20Rafael!%20Quero%20um%20site/apresentação."
+            href="https://wa.me/553199255812?text=Olá,%20Rafael!%20Quero%20um%20site/apresentação."
             target="_blank"
             rel="noopener noreferrer"
           >
