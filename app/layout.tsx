@@ -1,14 +1,22 @@
-﻿import "./styles/globals.css";
+﻿// app/layout.tsx
+import "./globals.css";
+import type { Metadata } from "next";
+import Header from "./components/Header";
 
-export const metadata = {
-  title: "Rafael 50 — Nova Vida",
-  description: "Sistema pessoal para metas, finanças e hábitos (10 anos).",
+export const metadata: Metadata = {
+  title: "Rafael50",
+  description: "Projeto Next.js mínimo para Vercel",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <Header />
+        <main className="container">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
