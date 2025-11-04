@@ -30,7 +30,8 @@ jobs:
         run: npm install -g yarn
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
+
 
       - name: Checkout repository (robusto)
         uses: actions/checkout@v4
